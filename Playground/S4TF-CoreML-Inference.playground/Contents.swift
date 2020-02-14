@@ -26,13 +26,22 @@ func inferenceCoreML(model: MLModel, x: [Float]) -> Float {
     return Float(prediction.featureValue(for: "output")!.multiArrayValue![0].doubleValue)
 }
 
-let (coreModel, compiledModelUrl) = compileCoreML(path: "/Users/jacopo/TestCoreMLTools/model/coreml_model_double_train.mlmodel")
+let (coreModel, compiledModelUrl) = compileCoreML(path: "/Users/jacopo/TestSwiftCoreMLTools/model/s4tf_train_model.mlmodel")
 
 // print(coreModel.modelDescription)
 
-let record: [Float] = [-0.38987719,  0.06312032, -0.48184431, -0.27218959, -0.25178915, -0.38486309,
-                       0.63271075,  1.27556958, -0.51912059, -0.5780854,  -1.51173314,  0.33334089, 0.62918333] // Expected 18.9
+let cheat0: [Float] = [-0.30846816,   0.15054052,   -1.1039964,  -0.30756173,   0.05126577,   0.33352128, 0.024851447, -0.035726987,  -0.89119065,  -0.43651816,   -1.2319369,   0.42111015, -0.93603975]
+
+let record0: [Float] = [10.127699, -0.56208307,   1.3125796, -0.30756173,   1.4050479,  -0.8863933,   1.2248203, -1.2581577,   2.6233904,   2.3634233,   0.9779132,  0.12650238,   1.6906141]
+
+let record1: [Float] = [2.8739426, -0.56208307,   1.3125796, -0.30756173,    1.108089,  -2.9993627,   1.2248203, -1.3716108,   2.6233904,   2.3634233,   0.9779132, -0.23774466,   1.7431473]
+
+let record17: [Float] = [1.541963, -0.56208307,   1.3125796, -0.30756173,   0.7150559, -0.93426037,   0.7972452, -1.0169381,   2.6233904,   2.3634233,   0.9779132,   -2.180478,  0.39479825]
 
 
-let prediction = inferenceCoreML(model: coreModel, x: record)
-print(prediction)
+print(inferenceCoreML(model: coreModel, x: cheat0))
+print(inferenceCoreML(model: coreModel, x: record0))
+print(inferenceCoreML(model: coreModel, x: record1))
+print(inferenceCoreML(model: coreModel, x: record17))
+
+
