@@ -26,7 +26,7 @@ func inferenceCoreML(model: MLModel, x: [Float]) -> Float {
     return Float(prediction.featureValue(for: "output1")!.multiArrayValue![0].doubleValue)
 }
 
-let (coreModel, compiledModelUrl) = compileCoreML(path: "/Users/jacopo/TestCoreMLTools/model/coreml_model_double_train.mlmodel")
+let (coreModel, compiledModelUrl) = compileCoreML(path: "/Users/jacopo/TestSwiftCoreMLTools/model/coreml_model_double_train.mlmodel")
 
 // print(coreModel.modelDescription)
 
@@ -39,13 +39,6 @@ let record2: [Float] = [-0.31519425, -0.48782211, -0.44154073, -0.27218959, -0.1
 let record17: [Float] = [-0.4044373,  -0.48782211, -1.14759972, -0.27218959, -0.55465147,  0.19583194,
                          0.20273463, -0.34317238, -0.86720641, -0.82799709, -0.29750355,  0.40825989, -0.62605612] // Expected 22.0
 
-let prediction = inferenceCoreML(model: coreModel, x: record)
-print(prediction)
-
-let prediction2 = inferenceCoreML(model: coreModel, x: record2)
-print(prediction2)
-
-let prediction17 = inferenceCoreML(model: coreModel, x: record17)
-print(prediction17)
-
-
+print(inferenceCoreML(model: coreModel, x: record))
+print(inferenceCoreML(model: coreModel, x: record2))
+print(inferenceCoreML(model: coreModel, x: record17))
