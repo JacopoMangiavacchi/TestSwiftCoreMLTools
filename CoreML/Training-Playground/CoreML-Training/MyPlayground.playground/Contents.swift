@@ -1,0 +1,3 @@
+import SwiftCoreMLTools
+
+print("ok")

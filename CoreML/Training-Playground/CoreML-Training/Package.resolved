@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftProtobuf",
+        "repositoryURL": "https://github.com/apple/swift-protobuf.git",
+        "state": {
+          "branch": null,
+          "revision": "7790acf0a81d08429cb20375bf42a8c7d279c5fe",
+          "version": "1.8.0"
+        }
+      },
+      {
+        "package": "SwiftCoreMLTools",
+        "repositoryURL": "https://github.com/JacopoMangiavacchi/SwiftCoreMLTools",
+        "state": {
+          "branch": null,
+          "revision": "0cf3247d9945afc79be11816056650b119f5f686",
+          "version": "0.0.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
