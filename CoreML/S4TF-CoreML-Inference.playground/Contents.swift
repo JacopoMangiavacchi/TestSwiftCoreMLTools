@@ -12,7 +12,7 @@ func compileCoreML(path: String) -> (MLModel, URL) {
 func inferenceCoreML(model: MLModel, x: [Float]) -> Float {
     let inputName = "input"
     
-    let multiArr = try! MLMultiArray(shape: [13], dataType: .double)
+    let multiArr = try! MLMultiArray(shape: [13], dataType: .float32)
     for i in 0..<13 {
         multiArr[i] = NSNumber(value: x[i])
     }
@@ -23,7 +23,7 @@ func inferenceCoreML(model: MLModel, x: [Float]) -> Float {
     
     let prediction = try! model.prediction(from: provider)
 
-    return Float(prediction.featureValue(for: "output")!.multiArrayValue![0].doubleValue)
+    return Float(prediction.featureValue(for: "output")!.multiArrayValue![0].floatValue)
 }
 
 let (coreModel, compiledModelUrl) = compileCoreML(path: "/Users/jacopo/TestSwiftCoreMLTools/model/s4tf_train_model.mlmodel")

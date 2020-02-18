@@ -36,39 +36,36 @@ let coremlModel = Model(version: 4,
                         author: "Jacopo Mangiavacchi",
                         license: "MIT",
                         userDefined: ["SwiftCoremltoolsVersion" : "0.0.3"]) {
-    Input(name: "input", shape: [13], featureType: .Double)
-    Output(name: "output", shape: [1], featureType: .Double)
+    Input(name: "input", shape: [13])
+    Output(name: "output", shape: [1])
     NeuralNetwork {
         InnerProduct(name: "dense1",
                      input: ["input"],
                      output: ["outDense1"],
-                     weights: model.layer1.weight.transposed().flattened().scalars,
+                     weight: model.layer1.weight.transposed().flattened().scalars,
                      bias: model.layer1.bias.flattened().scalars,
                      inputChannels: 13,
-                     outputChannels: 64,
-                     updatable: false)
+                     outputChannels: 64)
         ReLu(name: "Relu1",
              input: ["outDense1"],
              output: ["outRelu1"])
         InnerProduct(name: "dense2",
                      input: ["outRelu1"],
                      output: ["outDense2"],
-                     weights: model.layer2.weight.transposed().flattened().scalars,
+                     weight: model.layer2.weight.transposed().flattened().scalars,
                      bias: model.layer2.bias.flattened().scalars,
                      inputChannels: 64,
-                     outputChannels: 32,
-                     updatable: false)
+                     outputChannels: 32)
         ReLu(name: "Relu2",
              input: ["outDense2"],
              output: ["outRelu2"])
         InnerProduct(name: "dense3",
                      input: ["outRelu2"],
                      output: ["output"],
-                     weights: model.layer3.weight.transposed().flattened().scalars,
+                     weight: model.layer3.weight.transposed().flattened().scalars,
                      bias: model.layer3.bias.flattened().scalars,
                      inputChannels: 32,
-                     outputChannels: 1,
-                     updatable: false)
+                     outputChannels: 1)
     }
 }
 ```
